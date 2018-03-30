@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: postgres
+  web:
+    build: ./web
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./web:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  jupyter_host:  # Docker内のホスト名
+    container_name: jupyter # 起動するコンテナ名．指定するとスケール不可．
+    image:  jupyter/datascience-notebook:latest
+    volumes:
+      - "./work:/home/jovyan/work"
+      - "~/cs_stat_ml:/home/jovyan/data"
+    ports:
+      - "8888:8888" # 更改するポート <host port>:<container port>の順に記述
+    depends_on:
+      - db
+      - web
+    
+
