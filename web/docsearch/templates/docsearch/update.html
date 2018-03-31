@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>
-    Done update!
+    {{ finish }}
 </p>
 <form action="{% url 'docsearch:top' %}" method="post">
     {% csrf_token %}
