@@ -12,7 +12,6 @@ services:
     depends_on:
       - db
   jupyter_host:  # Docker内のホスト名
-    container_name: jupyter # 起動するコンテナ名．指定するとスケール不可．
     image:  jupyter/datascience-notebook:latest
     volumes:
       - "./work:/home/jovyan/work"
