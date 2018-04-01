@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+</head>
+<body>
+<ul>
+{% for file in file_list.all %}
+    <li>{{ file.filename }}</li>
+{% endfor %}
+</ul>
+<form action="{% url 'docsearch:top' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="top page">
+</form>
+</body>
+</html>
