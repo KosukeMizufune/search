@@ -5,11 +5,15 @@
     <title>search</title>
 </head>
 <body>
-<ul>
-{% for file in file_list.all %}
-    <li>{{ file.filename }}</li>
-{% endfor %}
-</ul>
+{% if file_list %}
+    <ul>
+    {% for file in file_list.all %}
+        <li>{{ file.filename }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No files are available.</p>
+{% endif %}
 <form action="{% url 'docsearch:top' %}" method="post">
     {% csrf_token %}
     <input type="submit" value="top page">
