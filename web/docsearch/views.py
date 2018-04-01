@@ -1,8 +1,8 @@
 from django.shortcuts import render
+from django.views import generic
 
 from docsearch.models import File 
 from docsearch.utils.update import find_all_files
-from django.views import generic
 
 # Create your views here.
 def top(request):
