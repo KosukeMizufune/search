@@ -6,4 +6,5 @@ app_name = 'docsearch'
 urlpatterns = [
     path('', views.top, name='top'),
     path('update/', views.update, name='update'),
+    path('search/', views.SearchView.as_view(), name='search'),
 ]
