@@ -8,7 +8,14 @@
 <p>{{ top }}</p>
 <form action="{% url 'docsearch:update' %}" method="post">
     {% csrf_token %}
-    <input type="submit", value="update files">
+    <input type="submit" value="update files">
+</form>
+<p>
+    {{ search }}
+</p>
+<form action="{% url 'docsearch:search' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="search files">
 </form>
 </body>
 </html>
