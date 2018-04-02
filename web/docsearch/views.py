@@ -1,5 +1,7 @@
-from django.shortcuts import render
 from django.views import generic
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from docsearch.models import File 
 from docsearch.utils.update import find_all_files
@@ -9,16 +11,19 @@ def top(request):
     return render(request, 'docsearch/top.html', {'top': 'update here', 'search': 'search here'})
 
 def update(request):
-    tmp = 'bad'
     for file in find_all_files('/home/jovyan/data/'):
-        tmp = 'partially ok'
         if file[-3:] == '.md':
-            tmp = 'ok'
             f = open(file)
             File(filename=file, text=f.read()).save()
             f.close()
-    return render(request, 'docsearch/update.html', {'finish': tmp})
+    return HttpResponseRedirect(reverse('docsearch:update_result'))
+
+def update_result(request):
+    return render(request, 'docsearch/update_result.html', {'finish': 'finish update!'})
+
+def search(request):
+    return HttpResponseRedirect(reverse('docsearch:search_result'))
 
 class SearchView(generic.ListView):
     model = File
-    template_name = 'docsearch/search.html'
+    template_name = 'docsearch/search_result.html'
