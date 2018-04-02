@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    {{ finish }}
+</p>
+<form action="{% url 'docsearch:top' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="top page">
+</form>
+</body>
+</html>
