@@ -14,7 +14,12 @@ def update(request):
     for file in find_all_files('/home/jovyan/data/'):
         if file[-3:] == '.md':
             f = open(file)
-            File(filename=file, text=f.read()).save()
+            try:
+                tmp_file = File.objects.get(filename=file)
+                tmp_file.text = f.read()
+                tmp_file.save()
+            except File.DoesNotExist:
+                File(filename=file, text=f.read()).save()           
             f.close()
     return HttpResponseRedirect(reverse('docsearch:update_result'))
 
