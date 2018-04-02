@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ top }}</title>
-</head>
-<body>
-<p>{{ top }}</p>
-<form action="{% url 'docsearch:update' %}" method="post">
-    {% csrf_token %}
-    <input type="submit" value="update files">
-</form>
-<p>
-    {{ search }}
-</p>
-<form action="{% url 'docsearch:search' %}" method="post">
-    {% csrf_token %}
-    <input type="submit" value="search files">
-</form>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}top{% endblock %}
+
+{% block content %}
+    <p>{{ top }}</p>
+    <form action="{% url 'docsearch:update' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="update files">
+    </form>
+    <p>
+        {{ search }}
+    </p>
+    <form action="{% url 'docsearch:search' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="search files">
+    </form>
+{% endblock %}
