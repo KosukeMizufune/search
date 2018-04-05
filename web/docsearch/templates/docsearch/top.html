@@ -11,7 +11,7 @@
     <p>
         {{ search }}
     </p>
-    <form action="{% url 'docsearch:search' %}" method="post">
+    <form action="{% url 'docsearch:search' %}" method="get">
         {% csrf_token %}
         <input type="submit" value="search files">
     </form>
