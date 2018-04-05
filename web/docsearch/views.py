@@ -26,9 +26,6 @@ def update(request):
 def update_result(request):
     return render(request, 'docsearch/update_result.html', {'finish': 'finish update!'})
 
-def search(request):
-    return HttpResponseRedirect(reverse('docsearch:search_result'))
-
 class SearchView(generic.ListView):
     model = File
     template_name = 'docsearch/search_result.html'
