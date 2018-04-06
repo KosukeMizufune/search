@@ -12,15 +12,5 @@ services:
       - "8000:8000"
     depends_on:
       - db
-  jupyter_host:  # Docker内のホスト名
-    image:  jupyter/datascience-notebook:latest
-    volumes:
-      - "./work:/home/jovyan/work"
-      - "~/cs_stat_ml:/home/jovyan/data"
-    ports:
-      - "8888:8888" # 更改するポート <host port>:<container port>の順に記述
-    depends_on:
-      - db
-      - web
     
 
