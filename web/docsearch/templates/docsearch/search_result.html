@@ -12,7 +12,7 @@
     {% else %}
         <p>No files are available.</p>
     {% endif %}
-    <form action="{% url 'docsearch:top' %}" method="post">
+    <form action="{% url 'docsearch:top' %}" method="get">
         {% csrf_token %}
         <input type="submit" value="top page">
     </form>
