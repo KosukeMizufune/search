@@ -9,9 +9,17 @@ from docsearch.forms import SearchForm
 from docsearch.utils.search import search_text
 
 # Create your views here.
-def top(request):
-    form = SearchForm()
-    return render(request, 'docsearch/top.html', {'top': 'update here', 'search': 'search here', 'form': form})
+
+class TopView(generic.TemplateView):
+    template_name = 'docsearch/top.html'
+    form_class = SearchForm()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['top'] = 'update here'
+        context['search'] = 'search here'
+        context['form'] = self.form_class
+        return context
 
 def update(request):
     for file in find_all_files('/home/jovyan/data/'):
