@@ -5,10 +5,13 @@ from django.urls import reverse
 
 from docsearch.models import File 
 from docsearch.utils.update import find_all_files
+from docsearch.forms import SearchForm
+from docsearch.utils.search import search_text
 
 # Create your views here.
 def top(request):
-    return render(request, 'docsearch/top.html', {'top': 'update here', 'search': 'search here'})
+    form = SearchForm()
+    return render(request, 'docsearch/top.html', {'top': 'update here', 'search': 'search here', 'form': form})
 
 def update(request):
     for file in find_all_files('/home/jovyan/data/'):
@@ -28,4 +31,18 @@ def update_result(request):
 
 class SearchView(generic.ListView):
     model = File
+    form_class = SearchForm
     template_name = 'docsearch/search_result.html'
+    context_object_name = 'file_list'
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.form = None
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        self.form = self.form_class(self.request.GET or None)
+        if self.form.is_valid() and self.form.cleaned_data.get('word'):
+            target_files = search_text(self.form.cleaned_data['word'])
+            qs = qs.filter(filename__in=target_files)
+        return qs
