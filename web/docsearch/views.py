@@ -34,8 +34,13 @@ def update(request):
             f.close()
     return HttpResponseRedirect(reverse('docsearch:update_result'))
 
-def update_result(request):
-    return render(request, 'docsearch/update_result.html', {'finish': 'finish update!'})
+class UploadView(generic.TemplateView):
+    template_name = 'docsearch/update_result.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['finish'] = 'finish update!'
+        return context
 
 class SearchView(generic.ListView):
     model = File
