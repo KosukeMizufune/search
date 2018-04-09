@@ -1,14 +1,14 @@
 from django.views import generic
-from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from docsearch.models import File 
+from docsearch.models import File
 from docsearch.utils.update import find_all_files
 from docsearch.forms import SearchForm
 from docsearch.utils.search import search_text
 
 # Create your views here.
+
 
 class TopView(generic.TemplateView):
     template_name = 'docsearch/top.html'
@@ -21,6 +21,7 @@ class TopView(generic.TemplateView):
         context['form'] = self.form_class
         return context
 
+
 def update(request):
     for file in find_all_files('/home/jovyan/data/'):
         if file[-3:] == '.md':
@@ -30,17 +31,19 @@ def update(request):
                 tmp_file.text = f.read()
                 tmp_file.save()
             except File.DoesNotExist:
-                File(filename=file, text=f.read()).save()           
+                File(filename=file, text=f.read()).save()
             f.close()
     return HttpResponseRedirect(reverse('docsearch:update_result'))
 
+
 class UploadView(generic.TemplateView):
     template_name = 'docsearch/update_result.html'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['finish'] = 'finish update!'
         return context
+
 
 class SearchView(generic.ListView):
     model = File
