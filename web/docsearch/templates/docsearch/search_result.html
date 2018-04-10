@@ -6,7 +6,7 @@
     {% if file_list %}
         <ul>
         {% for file in file_list.all %}
-            <li>{{ file.filename }}</li>
+            <li><a href="{% url 'docsearch:search_text' file.id %}">{{ file.filename }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
