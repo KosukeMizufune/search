@@ -62,3 +62,8 @@ class SearchView(generic.ListView):
             target_files = search_text(self.form.cleaned_data['word'])
             qs = qs.filter(filename__in=target_files)
         return qs
+
+
+class TextView(generic.DetailView):
+    model = File
+    template_name = 'docsearch/search_text.html'
