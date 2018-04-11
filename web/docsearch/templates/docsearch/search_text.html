@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load myfilter %}
 
 {% block title %}text{% endblock %}
 
 {% block content %}
-<p>{{ file.text }}</p>
+<p>{{ file.text | mark2html| safe }}</p>
 {% endblock %}
