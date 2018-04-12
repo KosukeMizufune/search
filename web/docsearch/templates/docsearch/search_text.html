@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% load myfilter %}
+{% load static %}
 
 {% block title %}text{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'docsearch/styles/dracula.css' %}" />
+<script src="{% static 'docsearch/highlight.pack.js' %}"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 <p>{{ file.text | mark2html| safe }}</p>
 {% endblock %}
