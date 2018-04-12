@@ -6,6 +6,7 @@ register = template.Library()
 
 
 @register.filter
+@stringfilter
 def mark2html(value):
-    return markdown.markdown(value)
+    return markdown.markdown(value, extensions=['fenced_code', 'codehilite(css_class=highlight)'])
 
