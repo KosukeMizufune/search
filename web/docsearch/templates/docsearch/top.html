@@ -6,11 +6,11 @@
     <h4 class="mt-4 border-bottom"> {{ top }} </h4>
     <form action="{% url 'docsearch:update' %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="update files">
+         <button type="submit" class="btn btn-primary">update!</button>
     </form>
     <h4 class="mt-4 border-bottom"> {{ search }} </h4>
     <form action="{% url 'docsearch:search_result' %}" method="get">
         {% bootstrap_form form layout='horizontal' %}
-        <input type="submit" value="search files" />
+        <button type="submit" class="btn btn-primary">search!</button>
     </form>
 {% endblock %}
