@@ -3,13 +3,12 @@
 <html lang="en">
 <head>
     <link href="{% static 'docsearch/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'docsearch/css/bootstrap-theme.min.css' %}" rel="stylesheet">
-    <script src="{% static 'docsearch/js/jquery-2.2.0.min.js' %}"></script>
-    <script src="{% static 'docsearch/js/bootstrap.min.js' %}"></script>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <script src="{% static 'docsearch/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'docsearch/js/bootstrap.bundle.min.js' %}"></script>
     {% block content %}{% endblock %}
 </body>
 </html>
