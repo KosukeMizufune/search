@@ -3,7 +3,7 @@
 {% block title %}top{% endblock %}
 
 {% block content %}
-    <p>{{ top }}</p>
+    <h4 class="mt-4 border-bottom"> {{ top }} </h4>
     <form action="{% url 'docsearch:update' %}" method="post">
         {% csrf_token %}
         <input type="submit" value="update files">
