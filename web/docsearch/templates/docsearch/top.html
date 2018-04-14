@@ -8,9 +8,7 @@
         {% csrf_token %}
         <input type="submit" value="update files">
     </form>
-    <p>
-        {{ search }}
-    </p>
+    <h4 class="mt-4 border-bottom"> {{ search }} </h4>
     <form action="{% url 'docsearch:search_result' %}" method="get">
         {% bootstrap_form form layout='horizontal' %}
         <input type="submit" value="search files" />
