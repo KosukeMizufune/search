@@ -7,8 +7,10 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <script src="{% static 'docsearch/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'docsearch/js/bootstrap.bundle.min.js' %}"></script>
-    {% block content %}{% endblock %}
+    <div class="container">
+        <script src="{% static 'docsearch/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'docsearch/js/bootstrap.bundle.min.js' %}"></script>
+        {% block content %}{% endblock %}
+    </div>    
 </body>
 </html>
