@@ -5,7 +5,7 @@
 {% block title %}text{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'docsearch/styles/dracula.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'docsearch/styles/github.css' %}" />
 <script src="{% static 'docsearch/highlight.pack.js' %}"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <p>{{ file.text | mark2html| safe }}</p>
