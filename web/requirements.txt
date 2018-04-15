@@ -2,3 +2,4 @@ Django==2.0.3
 psycopg2-binary
 Markdown==2.6.11
 django-bootstrap4
+python-markdown-math
